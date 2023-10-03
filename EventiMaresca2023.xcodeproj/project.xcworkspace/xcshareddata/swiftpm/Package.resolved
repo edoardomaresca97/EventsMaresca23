@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "dbnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davidebalistreri/DBNetworking",
+      "state" : {
+        "revision" : "99934b082b9418514a68f258b57dbb028607f4ea",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}

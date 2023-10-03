@@ -10,9 +10,19 @@ import DBNetworking
 
 struct LoginView: View {
     
-    @State private var email = "davide@email.it"
-    
+    @State private var email = "edoardo@libero.it"
     @State private var password = "password"
+    //qui attivo o disattivo l'oscuramento della passowrd
+    @State private var IsSecure = true
+    
+    //eseguo un elenco dei campi elencati (oggetti)
+    enum Field: Int, Hashable {
+        case email
+        case password
+    }
+    // Variabile che include quale campo di testo ha attualmente il focus
+    @FocusState private var focused: Field?
+    
     
     
     var body: some View {
@@ -29,6 +39,8 @@ struct LoginView: View {
                 .foregroundColor(.gray)
             
             TextField("Email", text: $email)
+                .focused($focused, equals: .email)
+                .onSubmit { focused = .password}
                 .keyboardType(.emailAddress)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
@@ -38,12 +50,35 @@ struct LoginView: View {
                         .stroke(.gray, lineWidth: 1)
                 }
             
-            SecureField("Password", text: $password)
-                .padding()
-                .overlay {
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(.gray, lineWidth: 1)
+            HStack {
+                Group {
+                    if IsSecure {
+                        SecureField("Password", text: $password)
+                    }
+                    else {
+                        TextField("Password", text: $password)
+                    }
                 }
+                .focused($focused, equals: .email)
+                .onSubmit {
+                    Task {
+                        await self.login()
+                    }
+                }
+                
+                Button {
+                    self.IsSecure.toggle()
+                } label: {
+                    Image(systemName: IsSecure ? "eye" : "eye.slash")
+                        .tint(.black)
+                }
+            }
+            .padding()
+            .frame(height: 54)
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray, lineWidth: 1)
+            }
             
             HStack(spacing: 0) {
                 Text("Hai dimenticato la password? ")
@@ -56,6 +91,7 @@ struct LoginView: View {
                         .foregroundColor(.blue)
                 }
             }
+                
             
             Spacer()
                 .frame(maxWidth: .infinity)
@@ -67,17 +103,13 @@ struct LoginView: View {
             
             VStack {
                 HStack(spacing: 0) {
-                    Text("Proseguendo accetti ")
-                    
-                    Button {
-                        // Codice da eseguire
-                    } label: {
+                    Link(destination: URL(string: "https://www.google.it")!) {
                         Text("Termini e condizioni")
                             .bold()
                             .foregroundColor(.blue)
                     }
                 }
-                
+            
                 Button {
                     Task {
                         // Chiamo la funzione per fare la login

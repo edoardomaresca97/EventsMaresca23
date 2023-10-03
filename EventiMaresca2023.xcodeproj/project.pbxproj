@@ -27,6 +27,7 @@
 		1BD54A022A1D0F3F00B5127B /* EventsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD54A012A1D0F3F00B5127B /* EventsResponseModel.swift */; };
 		1BD54A042A1D101900B5127B /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD54A032A1D101900B5127B /* ErrorModel.swift */; };
 		1BD54A062A1D1A0000B5127B /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD54A052A1D1A0000B5127B /* NetworkImageView.swift */; };
+		B345D9B82ACC773E00F7F011 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B345D9B72ACC773E00F7F011 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		1BD54A012A1D0F3F00B5127B /* EventsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsResponseModel.swift; sourceTree = "<group>"; };
 		1BD54A032A1D101900B5127B /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		1BD54A052A1D1A0000B5127B /* NetworkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
+		B345D9B72ACC773E00F7F011 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				1B4242E42A2F8A93002C9647 /* SplashView.swift */,
 				1B4242E62A2F8AF4002C9647 /* WelcomeView.swift */,
 				1B4242E82A2F8B1B002C9647 /* LoginView.swift */,
+				B345D9B72ACC773E00F7F011 /* SafariView.swift */,
 				1B4242EA2A2F8B24002C9647 /* SignupView.swift */,
 				1BA8C3B32A38D3DE00A4E836 /* HomeView.swift */,
 				1BD549FC2A1D056300B5127B /* EventsView.swift */,
@@ -216,6 +219,7 @@
 				1BA8C3B22A38D29900A4E836 /* ProfileView.swift in Sources */,
 				1B4242E72A2F8AF4002C9647 /* WelcomeView.swift in Sources */,
 				1BD54A022A1D0F3F00B5127B /* EventsResponseModel.swift in Sources */,
+				B345D9B82ACC773E00F7F011 /* SafariView.swift in Sources */,
 				1B4242E52A2F8A93002C9647 /* SplashView.swift in Sources */,
 				1BD549FB2A1D03DA00B5127B /* UserModel.swift in Sources */,
 				1B8383DB2A38DF3E0085283B /* UIHelper.swift in Sources */,

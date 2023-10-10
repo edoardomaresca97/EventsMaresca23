@@ -2,45 +2,59 @@
 //  Session.swift
 //  EventiMaresca2023
 //
-//  Created by iedstudent on 13/06/23.
+//  Created by iedstudent on 23/05/23.
 //
 
-import Foundation
+import SwiftUI
+import DBNetworking
 
-/// Questa classe contiene l'utente connesso sull'app
 class Session : ObservableObject {
     
-    /// Utilizzo il pattern Singleton per avere in app una sola istanza della Sessione
     static var shared = Session()
-    
     
     @Published var loggedUser: UserModel?
     
-    /// Questa variabile indica se c'è un utente connesso.
-    /// true: c'è un utente connesso
-    /// false: non c'è un utente connesso
-    /// nil: ancora non è stato controllato se c'è un utente oppure no
     @Published var isLogged: Bool?
+    private let databaseKey = "LoggedUser"
     
-    
-    /// Da utilizzare per salvare un utente in sessione,
-    /// oppure eliminarlo dalla sessione (passando nil).
-        func save(userToSave: UserModel?) {
-        
-        loggedUser = userToSave
+    func save(userToSave: UserModel?) {
+        self.loggedUser = userToSave
         
         if userToSave != nil {
             isLogged = true
+            // Coverto L'oggetto "UserModel" in un insieme di byte "Data"
+            let data = try? JSONEncoder().encode(userToSave)
+            
+            UserDefaults.standard.set(data, forKey: databaseKey)
         } else {
             isLogged = false
+            UserDefaults.standard.removeObject( forKey: databaseKey)
         }
+        // salvo l'utente sul database dell'app, così al riavvio non c'è bisogno del login
+        
     }
     
-    /// Da utilizzare per caricare l'utente salvato sul database dell'app.
+    
     func load() {
-        // TODO: prossima volta salviamo l'utente sul database
-        isLogged = false
+        // Carico i dati dal database
+        let data = UserDefaults.standard.data(forKey: databaseKey)
+        
+        // Provoa convertire i dati in un oggetto "UserModel"
+        self.loggedUser =  try? JSONDecoder().decode(UserModel.self, from: data ?? Data())
+        
+        //self.isLogged = self.loggedUser == nil ? false : true
+        
+        if self.loggedUser == nil {
+            self.isLogged = false
+            
+        }
+        else {
+            self.isLogged = true
+        }
+       
+        
     }
+    
 }
-
+    
 

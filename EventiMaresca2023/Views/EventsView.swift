@@ -7,12 +7,21 @@
 
 import SwiftUI
 import DBNetworking
+import MapKit
 
 struct EventsView: View {
     
     /// La lista degli eventi da rappresentare su questa pagina.
-    @State var eventsToShow: [EventModel] = []
+    @State private var eventsToShow: [EventModel] = []
     
+    /// Determina se visualizzare la lista o la mappa degli eventi.
+    @State private var isList: Bool = true
+    
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 42, longitude: 12),
+    span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+    )
+   
     
     var body: some View {
         // Disegno una riga per ogni evento che sta
@@ -86,12 +95,22 @@ struct EventsView: View {
                     self.eventsToShow = response.body?.data ?? []
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        //coidce da eseguire
+                        self.isList.toggle()
+                    } label: {
+                        Image(systemName: isList ? "map" : "calendar")
+                    }
+                }
+            }
         }
     }
-}
-
-struct EventsView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventsView()
+    
+    struct EventsView_Previews: PreviewProvider {
+        static var previews: some View {
+            EventsView()
+        }
     }
 }

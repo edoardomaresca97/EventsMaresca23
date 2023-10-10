@@ -28,6 +28,7 @@
 		1BD54A042A1D101900B5127B /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD54A032A1D101900B5127B /* ErrorModel.swift */; };
 		1BD54A062A1D1A0000B5127B /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD54A052A1D1A0000B5127B /* NetworkImageView.swift */; };
 		B345D9B82ACC773E00F7F011 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B345D9B72ACC773E00F7F011 /* SafariView.swift */; };
+		B396C9562AD5AD6200D4EBE8 /* DBNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = B396C9552AD5AD6200D4EBE8 /* DBNetworking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B396C9562AD5AD6200D4EBE8 /* DBNetworking in Frameworks */,
 				1B53B4CE2ACC5D7A00681A05 /* DBNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +153,7 @@
 			name = EventiMaresca2023;
 			packageProductDependencies = (
 				1B53B4CD2ACC5D7A00681A05 /* DBNetworking */,
+				B396C9552AD5AD6200D4EBE8 /* DBNetworking */,
 			);
 			productName = EventiBalistreri2023;
 			productReference = 1BD549E72A1CFDA900B5127B /* EventiMaresca2023.app */;
@@ -443,6 +446,10 @@
 		1B53B4CD2ACC5D7A00681A05 /* DBNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1B53B4CC2ACC5D7A00681A05 /* XCRemoteSwiftPackageReference "DBNetworking" */;
+			productName = DBNetworking;
+		};
+		B396C9552AD5AD6200D4EBE8 /* DBNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = DBNetworking;
 		};
 /* End XCSwiftPackageProductDependency section */

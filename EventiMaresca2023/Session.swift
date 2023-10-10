@@ -25,7 +25,7 @@ class Session : ObservableObject {
     
     /// Da utilizzare per salvare un utente in sessione,
     /// oppure eliminarlo dalla sessione (passando nil).
-    func save(userToSave: UserModel?) {
+        func save(userToSave: UserModel?) {
         
         loggedUser = userToSave
         
@@ -42,3 +42,5 @@ class Session : ObservableObject {
         isLogged = false
     }
 }
+
+

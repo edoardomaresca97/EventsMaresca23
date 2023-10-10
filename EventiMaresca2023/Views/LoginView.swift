@@ -23,7 +23,8 @@ struct LoginView: View {
     // Variabile che include quale campo di testo ha attualmente il focus
     @FocusState private var focused: Field?
     
-    
+    //quando viene messo a true, comparendo sulla pagina di safari
+    @State private var showPasswordRecover: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -109,7 +110,9 @@ struct LoginView: View {
                             .foregroundColor(.blue)
                     }
                 }
-            
+                .sheet(isPresented: $showPasswordRecover) {
+                    SafariView(url: "https://www.google.it")
+                }
                 Button {
                     Task {
                         // Chiamo la funzione per fare la login
